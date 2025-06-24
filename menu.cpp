@@ -40,7 +40,27 @@ void tambahBuahNamaJumlah(vector<Buah> &daftarBuah) {
     cout << "Data buah berhasil disimpan!" << endl;
 }
 
-
+// Fungsi untuk menampilkan daftar buah dalam bentuk tabel
+void tampilkanDaftarBuah(const vector<Buah> &daftarBuah) {
+    if (daftarBuah.empty()) {
+        cout << "Belum ada data buah." << endl;
+    } else {
+        cout << "===== DAFTAR BUAH =====" << endl;
+        cout << left << setw(5) << "No" 
+             << setw(20) << "Nama Buah" 
+             << setw(15) << "Jumlah Buah" << endl;
+        cout << string(40, '-') << endl;
+        for (size_t i = 0; i < daftarBuah.size(); ++i) {
+            cout << left << setw(5) << (i+1)
+                 << setw(20) << daftarBuah[i].nama
+                 << setw(15) << daftarBuah[i].stok << endl;
+        }
+    }
+    // Validasi input agar tetap di menu Daftar Buah
+    cout << endl << "Tekan Enter untuk kembali ke menu utama...";
+    cin.ignore();
+    cin.get();
+}
 
 int main() {
     int pilihan;
