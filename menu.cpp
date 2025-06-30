@@ -10,6 +10,37 @@ struct Buah {
     int stok;
 };
 
+// Fungsi untuk mencari buah berdasarkan nama
+void cariBuah(const vector<Buah> &daftarBuah) {
+    if (daftarBuah.empty()) {
+        cout << "Belum ada data buah." << endl;
+        cout << endl << "Tekan Enter untuk kembali ke menu utama...";
+        cin.ignore();
+        cin.get();
+        return;
+    }
+    string namaCari;
+    cout << "Masukkan nama buah yang dicari: ";
+    getline(cin, namaCari);
+
+    bool ditemukan = false;
+    for (size_t i = 0; i < daftarBuah.size(); ++i) {
+        if (daftarBuah[i].nama == namaCari) {
+            cout << "Buah ditemukan!" << endl;
+            cout << "Nama Buah: " << daftarBuah[i].nama << endl;
+            cout << "Jumlah Buah: " << daftarBuah[i].stok << endl;
+            ditemukan = true;
+            break;
+        }
+    }
+    if (!ditemukan) {
+        cout << "Buah dengan nama '" << namaCari << "' tidak ditemukan." << endl;
+    }
+    cout << endl << "Tekan Enter untuk kembali ke menu utama...";
+    cin.ignore();
+    cin.get();
+}
+
 // Fungsi untuk menambah buah hanya dengan nama dan jumlah
 void tambahBuahNamaJumlah(vector<Buah> &daftarBuah) {
     Buah buah;
@@ -71,6 +102,7 @@ int main() {
         cout << "1. Tambah Buah (Nama & Jumlah)" << endl;
         cout << "2. Tampilkan Data Buah Terakhir" << endl;
         cout << "3. Daftar Buah" << endl;
+        cout << "3. Cari Buah" << endl;
         cout << "0. Keluar" << endl;
         cout << "Pilih menu: ";
         while (!(cin >> pilihan)) {
@@ -96,6 +128,8 @@ int main() {
             case 3:
                 tampilkanDaftarBuah(daftarBuah);
                 break;
+            case 4:
+                CariBuah(daftarBuah);
             case 0:
                 cout << "Keluar dari program." << endl;
                 break;
